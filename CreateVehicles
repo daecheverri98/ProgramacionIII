@@ -1,0 +1,49 @@
+exports.createVehicles = (req, res, next) => {
+  let vhc = {
+    id: req.body.id,
+    placa: req.body.placa,
+    color: req.body.color,
+    cilindraje: req.body.cilindraje,
+    turbo: req.body.turbo
+    rin: req.body.rin,
+    puertas: req.body.puertas,
+    airbags: req.body.airbags,
+    direccion: req.body.direccion,
+    gasolina: req.body.gasolina,
+    traccion: req.body.traccion
+  };
+  vehiclesDto.save(vhc, (err, data) => {
+    if (err) {
+      return res.status(400).json(
+        {
+          error: err
+        }
+      };
+    }  
+  let user = {
+        placa: vhc.placa,
+        color: vhc.color,
+        cilindraje: vhc.cilindraje,
+        turbo: vhc.turbo
+        rin: vhc.rin,
+        puertas: vhc.puertas,
+        airbags: vhc.airbags,
+        direccion: vhc.direccion,
+        gasolina: vhc.gasolina,
+        traccion: vhc.traccion
+  };
+  userDto.save(user, (err, u) => {
+    if (err) {
+      return res.status(400).json{
+        {
+        error: err
+        }
+      };
+    }
+    res.status(201).json(
+      {
+        info: data
+      }
+  });
+};  
+    
